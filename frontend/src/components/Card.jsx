@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { CiEdit, CiHeart, CiTrash } from "react-icons/ci";
 
+
 const Card = () => {
+
+  const [completeButton, setCompleteButton] = useState("Incomplete");
+
+  const handleClick = (e) => {
+    setCompleteButton((prev) =>{
+      if(prev == 'Incomplete'){
+        return "Complete";
+      }else{
+        return "Incomplete";
+      }
+    })
+  }
+ 
+
   return (
     <div className="dark:bg-white col-span-1 p-3">
       <h1 className="font-bold text-2xl">Hello world</h1>
@@ -15,8 +30,8 @@ const Card = () => {
       {/* Flex and put all the icons and objects in the same row */}
       <div className="flex flex-row mt-4 gap-2 w-full">
         <div>
-          <button className="p-3 dark:bg-gray-900 text-white rounded-md">
-            Incomplete
+          <button className={`p-3 ${completeButton === "Incomplete" ? "dark:bg-gray-900 ": "dark:bg-green-500 "} text-white rounded-md`} onClick={handleClick}>
+            {completeButton}
           </button>
         </div>
         <div className="text-3xl flex items-center ">

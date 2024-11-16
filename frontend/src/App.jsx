@@ -6,7 +6,7 @@ import Home from './pages/Home'
 
 function App() {
   return (
-    <>
+    <div className='relative'>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Signup></Signup>}></Route>
@@ -14,7 +14,7 @@ function App() {
           <Route path='/home' element={<Home></Home>}></Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   )
 }
 
