@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { CiEdit, CiHeart, CiTrash } from "react-icons/ci";
 
 
-const Card = () => {
+const Card = ({title,description}) => {
 
   const [completeButton, setCompleteButton] = useState("Incomplete");
 
@@ -19,12 +19,9 @@ const Card = () => {
 
   return (
     <div className="dark:bg-white col-span-1 p-3">
-      <h1 className="font-bold text-2xl">Hello world</h1>
+      <h1 className="font-bold text-2xl">{title}</h1>
       <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-        doloremque totam error facilis consequatur numquam eos dolorem quidem,
-        molestias eveniet laboriosam rerum odio asperiores laborum iure? Labore
-        aliquam error voluptas!
+        {description}
       </div>
 
       {/* Flex and put all the icons and objects in the same row */}
