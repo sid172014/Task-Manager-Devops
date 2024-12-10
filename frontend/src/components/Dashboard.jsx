@@ -11,7 +11,7 @@ const Dashboard = () => {
   return (
     <>
     <div className="h-screen w-full dark:bg-gray-900">
-      <Cards home={"false"}  refetchTasks={refetchTasks} setCreateTaskDiv={setCreateTaskDiv}></Cards>
+      <Cards home={"false"} setRefetchTasks={setRefetchTasks} tab={"Dashboard"}  refetchTasks={refetchTasks} setCreateTaskDiv={setCreateTaskDiv}></Cards>
       <CreateTask setRefetchTasks={setRefetchTasks} createTaskDiv={createTaskDiv} setCreateTaskDiv={setCreateTaskDiv}></CreateTask>
     </div>
     </>

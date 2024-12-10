@@ -3,20 +3,20 @@ import Cards from './Cards';
 import CreateTask from './CreateTask';
 import { toast } from 'react-toastify';
 
-const ImportantTasks = () => {
+const IncompletedTasks = () => {
     
     useEffect(() => {
-        toast.success("Loaded Important Tasks !");
+        toast.success("Loaded In-Completed Tasks !");
     }, []);
 
 
     return (
         <>
         <div className="h-screen w-full dark:bg-gray-900">
-          <Cards tab={"Important"} home={"true"}></Cards>
+          <Cards tab={"Incomplete"} home={"true"}></Cards>
         </div>
         </>
     );
 }
 
-export default ImportantTasks
+export default IncompletedTasks

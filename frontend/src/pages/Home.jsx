@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Sidebar, { SidebarItem } from "../components/Sidebar";
 import Dashboard from "../components/Dashboard";
 import ImportantTasks from "../components/ImportantTasks";
+import CompletedTasks from "../components/CompletedTasks";
+import IncompletedTasks from "../components/IncompletedTasks";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -33,12 +35,14 @@ const Home = () => {
             }} activeTab={activeTab}></SidebarItem>
             <SidebarItem icon={""} text={"Completed Tasks"} onClick={() => {
               setActiveTab("Completed Tasks")
+              setRenderElement(<CompletedTasks></CompletedTasks>)
             }} activeTab={activeTab}></SidebarItem>
             <SidebarItem
               icon={""}
               text={"Incomplete Tasks"}
               onClick={() => {
                 setActiveTab("Incomplete Tasks")
+                setRenderElement(<IncompletedTasks></IncompletedTasks>)
               }}
               activeTab={activeTab}
             ></SidebarItem>
