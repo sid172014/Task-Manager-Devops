@@ -29,5 +29,30 @@ userSchema.methods.generateAuthToken = async function(){
     return user.token;
 }
 
+const taskSchema = new mongoose.Schema({
+    title : {
+        type : String,
+        required : true
+    },
+    description : {
+        type : String,
+        required : true
+    },
+    completed : {
+        type : Boolean,
+        required : true
+    },
+    important : {
+        type : Boolean,
+        required : true
+    },
+    owner : {
+        type : mongoose.Schema.Types.ObjectId,
+        required : true,
+        ref : 'users'
+    }
+})
+
 const users = mongoose.model('users',userSchema);
-module.exports = {users};
+const task = mongoose.model('task', taskSchema);
+module.exports = {users,task};
