@@ -4,7 +4,7 @@ import { FaHeart } from "react-icons/fa6";
 import axios from 'axios';
 import { toast } from "react-toastify";
 
-const Card = ({title,description,id,completed,important,setRefetchTasks}) => {
+const Card = ({title,description,id,completed,important,setRefetchTasks,setCreateTaskDiv,setData}) => {
 
   const [completeButton, setCompleteButton] = useState(completed=== true ? "Complete" : "Incomplete");
   const [importantButton, setImpotantButton] = useState(important === true ? true : false);
@@ -42,7 +42,10 @@ const Card = ({title,description,id,completed,important,setRefetchTasks}) => {
         }
       });
       console.log(response.data);
-     
+      
+      setImpotantButton((prev) => {
+        return !prev;
+      })
     }catch(e){
       console.log(e);
     }
@@ -68,6 +71,18 @@ const Card = ({title,description,id,completed,important,setRefetchTasks}) => {
       console.log(e);  
     }
   };
+
+
+  // Handling Edit Click
+  const handleEditClick = () => {
+    setData({
+      id,
+      title,
+      description,
+      completed,
+      important
+    });
+  };
  
 
   return (
@@ -88,7 +103,7 @@ const Card = ({title,description,id,completed,important,setRefetchTasks}) => {
           <button onClick={handleImportantClick}>{importantButton === true ? <FaHeart></FaHeart> : <CiHeart></CiHeart>}</button>
         </div>
         <div className='text-3xl flex items-center bg-white'>
-          <button><CiEdit /></button>
+          <button onClick={handleEditClick}><CiEdit /></button>
         </div>
         <div className="text-2xl flex items-center bg-white">
           <button onClick={handleDeleteClick}><CiTrash /></button>

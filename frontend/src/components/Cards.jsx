@@ -4,7 +4,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
-const Cards = ({ setCreateTaskDiv, refetchTasks,setRefetchTasks, home, tab }) => {
+const Cards = ({ setCreateTaskDiv, refetchTasks,setRefetchTasks, home, tab, setData }) => {
   const [fetchTasks, setFetchTasks] = useState([]);
   // Fetching All Tasks that belong to a particular user
   useEffect(() => {
@@ -105,6 +105,8 @@ const Cards = ({ setCreateTaskDiv, refetchTasks,setRefetchTasks, home, tab }) =>
                   completed={item.completed}
                   important={item.important}
                   setRefetchTasks={setRefetchTasks}
+                  setCreateTaskDiv={setCreateTaskDiv}
+                  setData={setData}
                 ></Card>
               );
             })}
