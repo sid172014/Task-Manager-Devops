@@ -4,7 +4,14 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
-const Cards = ({ setCreateTaskDiv, refetchTasks,setRefetchTasks, home, tab, setData }) => {
+const Cards = ({
+  setCreateTaskDiv,
+  refetchTasks,
+  setRefetchTasks,
+  home,
+  tab,
+  setData,
+}) => {
   const [fetchTasks, setFetchTasks] = useState([]);
   // Fetching All Tasks that belong to a particular user
   useEffect(() => {
@@ -19,13 +26,12 @@ const Cards = ({ setCreateTaskDiv, refetchTasks,setRefetchTasks, home, tab, setD
               },
             }
           );
-          console.log(response.data);
           setFetchTasks(response.data);
         } catch (e) {
           toast.error(e.message);
           console.log(e);
         }
-      }else if(tab === "Important"){
+      } else if (tab === "Important") {
         try {
           const response = await axios.get(
             "http://localhost:3000/api/v1/task/impTasks",
@@ -41,7 +47,7 @@ const Cards = ({ setCreateTaskDiv, refetchTasks,setRefetchTasks, home, tab, setD
           toast.error(e.message);
           console.log(e);
         }
-      }else if(tab === "Completed"){
+      } else if (tab === "Completed") {
         try {
           const response = await axios.get(
             "http://localhost:3000/api/v1/task/completedTasks",
@@ -57,7 +63,7 @@ const Cards = ({ setCreateTaskDiv, refetchTasks,setRefetchTasks, home, tab, setD
           toast.error(e.message);
           console.log(e);
         }
-      }else if(tab === "Incomplete"){
+      } else if (tab === "Incomplete") {
         try {
           const response = await axios.get(
             "http://localhost:3000/api/v1/task/incompletedTasks",
@@ -117,6 +123,13 @@ const Cards = ({ setCreateTaskDiv, refetchTasks,setRefetchTasks, home, tab, setD
         >
           <button
             onClick={() => {
+              setData({
+                id: "",
+                title: "",
+                description: "",
+                completed: false,
+                important: false,
+              });
               setCreateTaskDiv("fixed");
             }}
             className="w-full h-full flex flex-col items-center justify-center"

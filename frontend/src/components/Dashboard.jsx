@@ -20,7 +20,7 @@ const Dashboard = () => {
     <>
     <div className="h-screen w-full dark:bg-gray-900">
       <Cards setData={setData} home={"false"} setRefetchTasks={setRefetchTasks} tab={"Dashboard"}  refetchTasks={refetchTasks} setCreateTaskDiv={setCreateTaskDiv}></Cards>
-      <CreateTask data={data} setRefetchTasks={setRefetchTasks} createTaskDiv={createTaskDiv} setCreateTaskDiv={setCreateTaskDiv}></CreateTask>
+      <CreateTask data={data} setData={setData} setRefetchTasks={setRefetchTasks} createTaskDiv={createTaskDiv} setCreateTaskDiv={setCreateTaskDiv}></CreateTask>
     </div>
     </>
   );

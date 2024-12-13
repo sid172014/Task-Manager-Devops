@@ -120,6 +120,7 @@ router.get('/importantTask/:id', userAuthMiddleware, async(req,res) => {
     }
 });
 
+// Deletinng the tasks
 router.delete('/deleteTask/:id', userAuthMiddleware, async(req,res) => {
     try{
         const deleteTask = await task.findByIdAndDelete(req.params.id);
@@ -129,5 +130,23 @@ router.delete('/deleteTask/:id', userAuthMiddleware, async(req,res) => {
             message : "Couldn't delete the task"
         })
     }
+});
+
+// Updating the tasks
+router.put('/updateTask/:id', userAuthMiddleware, async(req,res) => {
+    try{
+
+        const updateTask = await task.findByIdAndUpdate(req.params.id,{
+            title : req.body.title,
+            description : req.body.description
+        });
+
+        res.send(updateTask);
+    }catch(e){
+        res.status(500).json({
+            message : e.message
+        })
+    }
 })
+
 module.exports = router;

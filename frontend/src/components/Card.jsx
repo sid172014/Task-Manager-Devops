@@ -82,6 +82,8 @@ const Card = ({title,description,id,completed,important,setRefetchTasks,setCreat
       completed,
       important
     });
+
+    setCreateTaskDiv("fixed");
   };
  
 

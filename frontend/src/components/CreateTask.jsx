@@ -7,8 +7,9 @@ const CreateTask = ({
   createTaskDiv,
   setCreateTaskDiv,
   setRefetchTasks,
-  data,
+  data
 }) => {
+
   const [inputTask, setInputTask] = useState({
     title: "",
     description: "",
@@ -17,14 +18,14 @@ const CreateTask = ({
   });
 
   useEffect(() => {
-    console.log(data);
+
     setInputTask({
       title: data.title,
       description: data.description,
       completed: data.completed,
       important: data.important,
     });
-    setCreateTaskDiv("fixed");
+
   }, [data]);
 
   const handleInputTexts = (e) => {
@@ -38,8 +39,9 @@ const CreateTask = ({
   };
 
   const handleButtonClick = async (e) => {
+    
     try {
-      console.log(inputTask);
+      if(data.id === ""){
       const response = await axios.post(
         "http://localhost:3000/api/v1/task/create",
         inputTask,
@@ -49,15 +51,32 @@ const CreateTask = ({
           },
         }
       );
+
+      toast.success(response.data.message);
+      }else{
+        const response = await axios.put(`http://localhost:3000/api/v1/task/updateTask/${data.id}`,
+          {
+            title : inputTask.title,
+            description : inputTask.description
+          },
+          {
+            headers: {
+              Authorization: localStorage.getItem("token")
+            },
+          }
+        );
+        toast.success("Successfully updated Task!");
+
+      } 
       setCreateTaskDiv("hidden");
       setRefetchTasks((prev) => {
         return !prev;
       });
-      toast.success(response.data.message);
+
     } catch (e) {
       toast.error(e);
     }
-  };
+}
 
   return (
     <>
