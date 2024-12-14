@@ -43,7 +43,7 @@ const CreateTask = ({
     try {
       if(data.id === ""){
       const response = await axios.post(
-        "http://localhost:3000/api/v1/task/create",
+        `${import.meta.env.VITE_TASK_URL}/create`,
         inputTask,
         {
           headers: {
@@ -54,7 +54,7 @@ const CreateTask = ({
 
       toast.success(response.data.message);
       }else{
-        const response = await axios.put(`http://localhost:3000/api/v1/task/updateTask/${data.id}`,
+        const response = await axios.put(`${import.meta.env.VITE_TASK_URL}/updateTask/${data.id}`,
           {
             title : inputTask.title,
             description : inputTask.description

@@ -12,7 +12,7 @@ const Card = ({title,description,id,completed,important,setRefetchTasks,setCreat
 
   const handleClick = async (e) => {
  
-    const requestString = `http://localhost:3000/api/v1/task/completeTask/${id}`
+    const requestString = `${import.meta.env.VITE_TASK_URL}/completeTask/${id}`
     const response = await axios.get(
       requestString,
       {
@@ -35,7 +35,7 @@ const Card = ({title,description,id,completed,important,setRefetchTasks,setCreat
   // Setting important Click buttons
   const handleImportantClick = async () => {
     try{
-      const requestString = `http://localhost:3000/api/v1/task/importantTask/${id}`;
+      const requestString = `${import.meta.env.VITE_TASK_URL}/importantTask/${id}`;
       const response = await axios.get(requestString,{
         headers : {
           Authorization: localStorage.getItem("token"),
@@ -55,7 +55,7 @@ const Card = ({title,description,id,completed,important,setRefetchTasks,setCreat
   // Deleting a particular Task
   const handleDeleteClick = async () => {
     try{
-      const requestString = `http://localhost:3000/api/v1/task/deleteTask/${id}`;
+      const requestString = `${import.meta.env.VITE_TASK_URL}/deleteTask/${id}`;
       const response = await axios.delete(requestString, {
         headers: {
           Authorization: localStorage.getItem("token"),
