@@ -22,12 +22,14 @@ const Box = ({ headingText, subheading, linkText, buttonText, link }) => {
 
   // Handling button click
   const handleButtonClick = async () => {
+    console.log(import.meta.env.VITE_USER_URL)
+
     if (window.location.pathname === "/") {
       // Signup Axios Request
 
       try{
         const response = await axios.post(
-          "http://localhost:3000/api/v1/user/signup",
+          `${import.meta.env.VITE_USER_URL}/signup`,
           userInfo
         );
         toast.success(response.data.message);
@@ -43,7 +45,7 @@ const Box = ({ headingText, subheading, linkText, buttonText, link }) => {
     } else {
       try {
         const response = await axios.post(
-          "http://localhost:3000/api/v1/user/signin",
+          `${import.meta.env.VITE_USER_URL}/signin`,
           userInfo
         );
 

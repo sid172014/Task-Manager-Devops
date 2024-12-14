@@ -19,7 +19,7 @@ const Cards = ({
       if (tab === "Dashboard") {
         try {
           const response = await axios.get(
-            "http://localhost:3000/api/v1/task/allTasks",
+            `${import.meta.env.VITE_TASK_URL}/allTasks`,
             {
               headers: {
                 Authorization: localStorage.getItem("token"),
@@ -34,7 +34,7 @@ const Cards = ({
       } else if (tab === "Important") {
         try {
           const response = await axios.get(
-            "http://localhost:3000/api/v1/task/impTasks",
+            `${import.meta.env.VITE_TASK_URL}/impTasks`,
             {
               headers: {
                 Authorization: localStorage.getItem("token"),
@@ -50,7 +50,7 @@ const Cards = ({
       } else if (tab === "Completed") {
         try {
           const response = await axios.get(
-            "http://localhost:3000/api/v1/task/completedTasks",
+            `${import.meta.env.VITE_TASK_URL}/completedTasks`,
             {
               headers: {
                 Authorization: localStorage.getItem("token"),
@@ -66,7 +66,7 @@ const Cards = ({
       } else if (tab === "Incomplete") {
         try {
           const response = await axios.get(
-            "http://localhost:3000/api/v1/task/incompletedTasks",
+            `${import.meta.env.VITE_TASK_URL}/incompletedTasks`,
             {
               headers: {
                 Authorization: localStorage.getItem("token"),
